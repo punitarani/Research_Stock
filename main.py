@@ -7,6 +7,23 @@ st.set_page_config(layout="wide")
 # Title
 st.title('Research Stock')
 
+
+# Get polygon API Key input
+polygon_api_key = st.text_input("Enter Polygon API Key")
+
+
+# Cache API key
+@st.cache(show_spinner=False)
+def cache_api_key(api_key):
+    return api_key
+
+
+polygon_api_key = cache_api_key(polygon_api_key)
+
+if not polygon_api_key:
+    st.warning("Please Input Polygon API Key")
+    st.stop()
+
 # Get ticker input
 ticker = st.text_input("Enter Ticker", "AAPL").upper()
 
@@ -14,7 +31,7 @@ ticker = st.text_input("Enter Ticker", "AAPL").upper()
 # Get financials data
 @st.cache(show_spinner=False)
 def get_financials(t):
-    return Financials(ticker=t).get_financials()
+    return Financials(ticker=t, api_key=polygon_api_key).get_financials()
 
 
 with st.spinner('Getting Financials...'):

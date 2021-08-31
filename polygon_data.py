@@ -2,14 +2,12 @@
 import pandas as pd
 import requests
 
-from config import polygon_api_key
-
 
 # Get historical financials
 class Financials:
-    def __init__(self, ticker: str):
+    def __init__(self, ticker: str, api_key):
         self.ticker = ticker.upper()
-        self.api_key = polygon_api_key
+        self.api_key = api_key
 
         self.metrics = ['calendarDate', 'accumulatedOtherComprehensiveIncome', 'assets', 'assetsAverage',
                         'assetsCurrent', 'assetsNonCurrent', 'assetTurnover', 'bookValuePerShare', 'capitalExpenditure',
