@@ -1,5 +1,5 @@
 # Research_Stock
-Research a companies financial data
+Research a company's financial data
 
 https://share.streamlit.io/punitarani/research_stock/main.py
 
