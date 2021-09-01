@@ -16,7 +16,6 @@ def cache_value(val):
 
 # Get polygon API Key input
 polygon_api_key = st.text_input("Enter Polygon API Key")
-
 polygon_api_key = cache_value(polygon_api_key)
 
 if not polygon_api_key:
@@ -24,7 +23,11 @@ if not polygon_api_key:
     st.stop()
 
 # Get ticker input
-ticker = st.text_input("Enter Ticker", "AAPL").upper()
+ticker = st.text_input("Enter Ticker").upper()
+
+if not ticker:
+    st.warning("Please Input an Equity Symbol")
+    st.stop()
 
 
 # Get financials data
