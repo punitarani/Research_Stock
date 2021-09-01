@@ -8,17 +8,16 @@ st.set_page_config(layout="wide")
 st.title('Research Stock')
 
 
+# Cache Value
+@st.cache(show_spinner=False)
+def cache_value(val):
+    return val
+
+
 # Get polygon API Key input
 polygon_api_key = st.text_input("Enter Polygon API Key")
 
-
-# Cache API key
-@st.cache(show_spinner=False)
-def cache_api_key(api_key):
-    return api_key
-
-
-polygon_api_key = cache_api_key(polygon_api_key)
+polygon_api_key = cache_value(polygon_api_key)
 
 if not polygon_api_key:
     st.warning("Please Input Polygon API Key")
